@@ -13,4 +13,8 @@ public class Usuario {
     this.email = email;
     }
 
+    public String toString() {
+    return "Usuário: " + this.nome + " | CPF: " + this.cpf + " | E-mail: " + this.email; 
+}
+
 }

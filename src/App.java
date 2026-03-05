@@ -1,13 +1,16 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class App {
     static Scanner scanner = new Scanner(System.in);
     static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+    static ArrayList<Livro> acervo = new ArrayList<Livro>();
+
     public static void main(String[] args) throws Exception {
         boolean rodando = true;
             while(rodando){ 
-                System.out.println("==========================\n= Bem-vindo - Biblioteca =\n");
+                System.out.println("==========================\n\n= Bem-vindo - Biblioteca =\n\n==========================");
                 System.out.println("========== MENU ==========\n");
                 System.out.println("= 1 - Listar Acervo\n"+
                                     "= 2 - Listar Usuários\n"+
@@ -23,10 +26,12 @@ public class App {
 
                 switch (opcao) {
                     case "1":
-                        //lista acervo
+                        System.out.println("\n\n= LIVROS CADASTRADOS: =");
+                        acervo.forEach(System.out::println);
                         break;
                     case "2":
-                        //lista usuario
+                        System.out.println("\n\n= USUARIOS CADASTRADOS: =");
+                        usuarios.forEach(System.out::println);
                         break;
                     case "3":
                         //pegar livros emprestado
@@ -35,15 +40,12 @@ public class App {
                         //devolver livros
                         break;
                     case "5":
-                        //cadastrar livros
+                        cadastrarLivros();
                         break;
                     case "6":
                         cadastrarUsuario();
-                        System.out.println(usuarios);
-                        //cadastra usuario
                         break;
                     case "0":
-                        //fechar programa
                         System.out.println("Até a próxima!");
                         rodando = false;
                         break;
@@ -72,5 +74,26 @@ public static void cadastrarUsuario(){
         
         usuarios.add(novoUsuario);
         }
+
+public static void cadastrarLivros(){
+        System.out.println("==========================");
+        System.out.println("=    CADASTRAR LIVRO  =");
+
+        System.out.println("Titulo do Livro: ");
+        String Titulo = scanner.nextLine().trim();
+
+        System.out.println("Autor: ");
+        String Autor = scanner.nextLine().trim();
+
+        System.out.println("Livro Cadastrado!");
+        Livro novoLivro = new Livro(Titulo, Autor);
+
+        acervo.add(novoLivro);
+        }
 }
 
+/*public String gerarCodigo() {
+    Random random = new Random();
+    int numero = random.nextInt(900000) + 100000;
+    return String.valueOf(numero);
+}*/
